@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Paper Questions Viewer</title>
+    
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            margin-top: 10px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .dataset-selector {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .dataset-selector h2 {
+            margin-top: 0;
+            color: #495057;
+            margin-bottom: 20px;
+        }
+        
+        .dataset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .dataset-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .dataset-option:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+        }
+        
+        .dataset-option.selected {
+            background: #2196f3;
+            border-color: #1976d2;
+            color: white;
+        }
+        
+        .dataset-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .dataset-subtitle {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.3em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-number {
+            font-size: 1.5em;
+        }
+        
+        .question-id {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        .question-content {
+            padding: 25px;
+        }
+        
+        .main-question {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #4facfe;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .sub-questions {
+            margin-top: 20px;
+        }
+        
+        .sub-question {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff;
+            border-left: 3px solid #28a745;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sub-question-header {
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .sub-question-text {
+            line-height: 1.6;
+        }
+        
+        .no-subquestions {
+            color: #6c757d;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .question-footer {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .total-parts {
+            font-weight: bold;
+        }
+        
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .toc-item {
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+        
+        .toc-item:hover {
+            background: #e9ecef;
+        }
+        
+        .toc-link {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .toc-link:hover {
+            color: #007bff;
+        }
+        
+        .content-area {
+            display: none;
+        }
+        
+        .content-area.active {
+            display: block;
+        }
+        
+        .refresh-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.2s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #218838;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .dataset-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cambridge A-Level Mathematics</h1>
+        <div class="subtitle">Past Paper Questions Viewer</div>
+        <div class="stats" id="globalStats" style="display: none;">
+            <div class="stat-item">
+                <div class="stat-number" id="totalQuestions">-</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalSubQuestions">-</div>
+                <div class="stat-label">Sub-Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalPages">-</div>
+                <div class="stat-label">Pages</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dataset-selector">
+        <h2>📚 Select a Dataset to View</h2>
+        <p>Choose from the available Cambridge A-Level Mathematics past papers:</p>
+        <div class="dataset-grid" id="datasetGrid">
+            <!-- Dataset options will be populated by JavaScript -->
+        </div>
+        <button class="refresh-btn" onclick="refreshDatasets()">🔄 Refresh Available Datasets</button>
+    </div>
+
+    <div class="content-area" id="contentArea">
+        <div class="toc" id="tocSection">
+            <h2>📋 Table of Contents</h2>
+            <ul class="toc-list" id="tocList">
+                <!-- Table of contents will be generated by JavaScript -->
+            </ul>
+        </div>
+
+        <div id="questionsContainer">
+            <!-- Questions will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="loading" id="loadingIndicator">Select a dataset to begin...</div>
+    <div class="error" id="errorMessage" style="display: none;"></div>
+
+    <script>
+        let currentData = null;
+        
+        // Available datasets (can be dynamically updated)
+        const availableDatasets = [
+            {
+                filename: '9709_s20_qp_11_dataset.json',
+                title: '9709 Summer 2020 Paper 11',
+                subtitle: 'Pure Mathematics 1'
+            },
+            {
+                filename: '9709_s20_qp_21_dataset.json', 
+                title: '9709 Summer 2020 Paper 21',
+                subtitle: 'Pure Mathematics 2'
+            },
+            {
+                filename: '9709_s20_qp_31_dataset.json',
+                title: '9709 Summer 2020 Paper 31', 
+                subtitle: 'Pure Mathematics 3'
+            },
+            {
+                filename: '9709_s20_qp_41_dataset.json',
+                title: '9709 Summer 2020 Paper 41',
+                subtitle: 'Mechanics 1'
+            }
+        ];
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showLoading(show = true) {
+            document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
+        }
+
+        function renderDatasetOptions() {
+            const grid = document.getElementById('datasetGrid');
+            grid.innerHTML = '';
+            
+            availableDatasets.forEach(dataset => {
+                const option = document.createElement('div');
+                option.className = 'dataset-option';
+                option.onclick = () => loadDataset(dataset.filename);
+                
+                option.innerHTML = `
+                    <div class="dataset-title">${dataset.title}</div>
+                    <div class="dataset-subtitle">${dataset.subtitle}</div>
+                `;
+                
+                grid.appendChild(option);
+            });
+        }
+
+        async function loadDataset(filename) {
+            showLoading(true);
+            
+            // Update UI to show selected dataset
+            document.querySelectorAll('.dataset-option').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.dataset-option').classList.add('selected');
+            
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filename}: ${response.status} ${response.statusText}`);
+                }
+                
+                currentData = await response.json();
+                renderContent();
+                
+            } catch (error) {
+                console.error('Error loading dataset:', error);
+                showError(`Error loading dataset: ${error.message}`);
+                currentData = null;
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function processText(text) {
+            // Convert \\n to actual line breaks
+            return text.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n');
+        }
+
+        function generateTOC() {
+            const tocList = document.getElementById('tocList');
+            tocList.innerHTML = '';
+            
+            if (!currentData || !currentData.questions) return;
+            
+            currentData.questions.forEach(question => {
+                const li = document.createElement('li');
+                li.className = 'toc-item';
+                
+                const a = document.createElement('a');
+                a.href = `#question-${question.main_question_id}`;
+                a.className = 'toc-link';
+                a.textContent = `Question ${question.main_question_id}`;
+                
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+        }
+
+        function generateQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+            
+            if (!currentData || !currentData.questions) return;
+            
+            currentData.questions.forEach(question => {
+                const questionCard = document.createElement('div');
+                questionCard.className = 'question-card';
+                questionCard.id = `question-${question.main_question_id}`;
+                
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">Question ${question.main_question_id}</span>
+                        <span class="question-id">${question.full_id}</span>
+                    </div>
+                    <div class="question-content">
+                        <div class="main-question">
+                            ${processText(question.main_part.text)}
+                        </div>
+                        ${question.sub_parts.length > 0 ? 
+                            `<div class="sub-questions">
+                                ${question.sub_parts.map(sub => `
+                                    <div class="sub-question">
+                                        <div class="sub-question-header">
+                                            Part (${sub.sub_letter}) - ${sub.full_id}
+                                        </div>
+                                        <div class="sub-question-text">
+                                            ${processText(sub.text)}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>` : 
+                            '<div class="no-subquestions">No sub-questions</div>'
+                        }
+                    </div>
+                    <div class="question-footer">
+                        <span class="total-parts">Total parts: ${question.total_parts}</span>
+                    </div>
+                `;
+                
+                container.appendChild(questionCard);
+            });
+        }
+
+        function updateStats() {
+            if (!currentData || !currentData.questions) return;
+            
+            const totalSubQuestions = currentData.questions.reduce((sum, q) => sum + q.sub_parts.length, 0);
+            document.getElementById('totalQuestions').textContent = currentData.questions.length;
+            document.getElementById('totalSubQuestions').textContent = totalSubQuestions;
+            document.getElementById('totalPages').textContent = currentData.total_pages || '-';
+            document.getElementById('globalStats').style.display = 'flex';
+        }
+
+        function renderContent() {
+            if (!currentData) {
+                document.getElementById('contentArea').classList.remove('active');
+                document.getElementById('globalStats').style.display = 'none';
+                return;
+            }
+            
+            generateTOC();
+            generateQuestions();
+            updateStats();
+            
+            document.getElementById('contentArea').classList.add('active');
+            
+            // Update page title
+            document.title = `Past Paper Questions - ${currentData.paper_id}`;
+            
+            // Re-render MathJax after content is loaded
+            setTimeout(() => {
+                if (window.MathJax) {
+                    MathJax.typesetPromise();
+                }
+            }, 100);
+        }
+
+        function refreshDatasets() {
+            // In a real application, this could fetch the list of available datasets
+            renderDatasetOptions();
+            showError('Dataset list refreshed! (In a real app, this would fetch from server)');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderDatasetOptions();
+            showLoading(false);
+        });
+    </script>
+</body>
+</html>

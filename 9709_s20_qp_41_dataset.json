@@ -1,0 +1,226 @@
+{
+  "paper_id": "9709_s20_qp_41",
+  "total_pages": 11,
+  "questions": [
+    {
+      "main_question_id": "1",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q1",
+      "main_part": {
+        "text": "1\n\nThree coplanar forces of magnitudes \\( 100 \\mathrm{~N}, 50 \\mathrm{~N} \\) and 50 N act at a point \\( A \\), as shown in the diagram. The value of \\( \\cos \\alpha \\) is \\( \\frac{4}{5} \\).\n\nFind the magnitude of the resultant of the three forces and state its direction.\n[3]",
+        "question_id": "1",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "2",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q2",
+      "main_part": {
+        "text": "2 A car of mass 1800 kg is towing a trailer of mass 400 kg along a straight horizontal road. The car and trailer are connected by a light rigid tow-bar. The car is accelerating at \\( 1.5 \\mathrm{~m} \\mathrm{~s}^{-2} \\). There are constant resistance forces of 250 N on the car and 100 N on the trailer.",
+        "question_id": "2",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the tension in the tow-bar.",
+          "question_id": "2(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q2(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the power of the engine of the car at the instant when the speed is \\( 20 \\mathrm{~m} \\mathrm{~s}^{-1} \\).\n[3]",
+          "question_id": "2(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q2(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "3",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q3",
+      "main_part": {
+        "text": "3 A particle \\( P \\) is projected vertically upwards with speed \\( 5 \\mathrm{~m} \\mathrm{~s}^{-1} \\) from a point \\( A \\) which is 2.8 m above horizontal ground.",
+        "question_id": "3",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the greatest height above the ground reached by \\( P \\).",
+          "question_id": "3(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q3(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the length of time for which \\( P \\) is at a height of more than 3.6 m above the ground.\n[4]",
+          "question_id": "3(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q3(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "4",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q4",
+      "main_part": {
+        "text": "4\n\nThe diagram shows a ring of mass 0.1 kg threaded on a fixed horizontal rod. The rod is rough and the coefficient of friction between the ring and the rod is 0.8 . A force of magnitude \\( T \\mathrm{~N} \\) acts on the ring in a direction at \\( 30^{\\circ} \\) to the rod, downwards in the vertical plane containing the rod. Initially the ring is at rest.",
+        "question_id": "4",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the greatest value of \\( T \\) for which the ring remains at rest.",
+          "question_id": "4(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q4(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the acceleration of the ring when \\( T=3 \\).\n[3]",
+          "question_id": "4(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q4(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "5",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q5",
+      "main_part": {
+        "text": "5\n\nA child of mass 35 kg is swinging on a rope. The child is modelled as a particle \\( P \\) and the rope is modelled as a light inextensible string of length 4 m . Initially \\( P \\) is held at an angle of \\( 45^{\\circ} \\) to the vertical (see diagram).",
+        "question_id": "5",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Given that there is no resistance force, find the speed of \\( P \\) when it has travelled half way along the circular arc from its initial position to its lowest point.",
+          "question_id": "5(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q5(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) It is given instead that there is a resistance force. The work done against the resistance force as \\( P \\) travels from its initial position to its lowest point is \\( X \\mathrm{~J} \\). The speed of \\( P \\) at its lowest point is \\( 4 \\mathrm{~m} \\mathrm{~s}^{-1} \\).\n\nFind \\( X \\).\n[3]",
+          "question_id": "5(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q5(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "6",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q6",
+      "main_part": {
+        "text": "6 A particle moves in a straight line \\( A B \\). The velocity \\( v \\mathrm{~m} \\mathrm{~s}^{-1} \\) of the particle \\( t \\mathrm{~s} \\) after leaving \\( A \\) is given by \\( v=k\\left(t^{2}-10 t+21\\right) \\), where \\( k \\) is a constant. The displacement of the particle from \\( A \\), in the direction towards \\( B \\), is 2.85 m when \\( t=3 \\) and is 2.4 m when \\( t=6 \\).",
+        "question_id": "6",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the value of \\( k \\). Hence find an expression, in terms of \\( t \\), for the displacement of the particle from \\( A \\).",
+          "question_id": "6(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q6(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the displacement of the particle from \\( A \\) when its velocity is a minimum.\n[4]",
+          "question_id": "6(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q6(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "7",
+      "paper_info": "9709_s20_qp_41",
+      "full_id": "9709_s20_qp_41_Q7",
+      "main_part": {
+        "text": "7\n\nA particle \\( P \\) of mass 0.3 kg , lying on a smooth plane inclined at \\( 30^{\\circ} \\) to the horizontal, is released from rest. \\( P \\) slides down the plane for a distance of 2.5 m and then reaches a horizontal plane. There is no change in speed when \\( P \\) reaches the horizontal plane. A particle \\( Q \\) of mass 0.2 kg lies at rest on the horizontal plane 1.5 m from the end of the inclined plane (see diagram). \\( P \\) collides directly with \\( Q \\).",
+        "question_id": "7",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) It is given that the horizontal plane is smooth and that, after the collision, \\( P \\) continues moving in the same direction, with speed \\( 2 \\mathrm{~m} \\mathrm{~s}^{-1} \\).\n\nFind the speed of \\( Q \\) after the collision.",
+          "question_id": "7(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_41_Q7(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) It is given instead that the horizontal plane is rough and that when \\( P \\) and \\( Q \\) collide, they coalesce and move with speed \\( 1.2 \\mathrm{~m} \\mathrm{~s}^{-1} \\).\n\nFind the coefficient of friction between \\( P \\) and the horizontal plane.\n[5]",
+          "question_id": "7(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_41_Q7(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    }
+  ],
+  "processing_log": [
+    {
+      "page": "page_3.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_4.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_5.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_6.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_7.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_8.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_9.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_10.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_11.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_12.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_13.png",
+      "detected_regions": 1
+    }
+  ]
+}

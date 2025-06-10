@@ -1,0 +1,340 @@
+{
+  "paper_id": "9709_s20_qp_31",
+  "total_pages": 16,
+  "questions": [
+    {
+      "main_question_id": "1",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q1",
+      "main_part": {
+        "text": "1 Find the set of values of \\( x \\) for which \\( 2\\left(3^{1-2 x}\\right)<5^{x} \\). Give your answer in a simplified exact form.\n[4]",
+        "question_id": "1",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "2",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q2",
+      "main_part": {
+        "text": "2",
+        "question_id": "2",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Expand \\( (2-3 x)^{-2} \\) in ascending powers of \\( x \\), up to and including the term in \\( x^{2} \\), simplifying the coefficients.",
+          "question_id": "2(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q2(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) State the set of values of \\( x \\) for which the expansion is valid.\n[1]",
+          "question_id": "2(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q2(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "3",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q3",
+      "main_part": {
+        "text": "3 Express the equation \\( \\tan \\left(\\theta+60^{\\circ}\\right)=2+\\tan \\left(60^{\\circ}-\\theta\\right) \\) as a quadratic equation in \\( \\tan \\theta \\), and hence solve the equation for \\( 0^{\\circ} \\leqslant \\theta \\leqslant 180^{\\circ} \\).",
+        "question_id": "3",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "4",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q4",
+      "main_part": {
+        "text": "4 The curve with equation \\( y=\\mathrm{e}^{2 x}(\\sin x+3 \\cos x) \\) has a stationary point in the interval \\( 0 \\leqslant x \\leqslant \\pi \\).",
+        "question_id": "4",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the \\( x \\)-coordinate of this point, giving your answer correct to 2 decimal places.",
+          "question_id": "4(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q4(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Determine whether the stationary point is a maximum or a minimum.\n[2]",
+          "question_id": "4(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q4(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "5",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q5",
+      "main_part": {
+        "text": "5",
+        "question_id": "5",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the quotient and remainder when \\( 2 x^{3}-x^{2}+6 x+3 \\) is divided by \\( x^{2}+3 \\).\n[3]",
+          "question_id": "5(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q5(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Using your answer to part (a), find the exact value of \\( \\int_{1}^{3} \\frac{2 x^{3}-x^{2}+6 x+3}{x^{2}+3} \\mathrm{~d} x \\).",
+          "question_id": "5(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q5(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "6",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q6",
+      "main_part": {
+        "text": "6\n\nThe diagram shows a circle with centre \\( O \\) and radius \\( r \\). The tangents to the circle at the points \\( A \\) and \\( B \\) meet at \\( T \\), and angle \\( A O B \\) is \\( 2 x \\) radians. The shaded region is bounded by the tangents \\( A T \\) and \\( B T \\), and by the minor arc \\( A B \\). The area of the shaded region is equal to the area of the circle.",
+        "question_id": "6",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Show that \\( x \\) satisfies the equation \\( \\tan x=\\pi+x \\).",
+          "question_id": "6(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q6(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) This equation has one root in the interval \\( 0<x<\\frac{1}{2} \\pi \\). Verify by calculation that this root lies between 1 and 1.4.",
+          "question_id": "6(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q6(b)",
+          "type": "sub"
+        },
+        {
+          "text": "(c) Use the iterative formula\n\\[\nx_{n+1}=\\tan ^{-1}\\left(\\pi+x_{n}\\right)\n\\]\nto determine the root correct to 2 decimal places. Give the result of each iteration to 4 decimal places.",
+          "question_id": "6(c)",
+          "sub_letter": "c",
+          "full_id": "9709_s20_qp_31_Q6(c)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 4
+    },
+    {
+      "main_question_id": "7",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q7",
+      "main_part": {
+        "text": "\\( 7 \\quad \\) Let \\( \\mathrm{f}(x)=\\frac{\\cos x}{1+\\sin x} \\).",
+        "question_id": "7",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Show that \\( \\mathrm{f}^{\\prime}(x)<0 \\) for all \\( x \\) in the interval \\( -\\frac{1}{2} \\pi<x<\\frac{3}{2} \\pi \\).",
+          "question_id": "7(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q7(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find \\( \\int_{\\frac{1}{6} \\pi}^{\\frac{1}{2} \\pi} \\mathrm{f}(x) \\mathrm{d} x \\). Give your answer in a simplified exact form.",
+          "question_id": "7(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q7(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "8",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q8",
+      "main_part": {
+        "text": "8 A certain curve is such that its gradient at a point \\( (x, y) \\) is proportional to \\( \\frac{y}{x \\sqrt{x}} \\). The curve passes through the points with coordinates \\( (1,1) \\) and \\( (4, e) \\).",
+        "question_id": "8",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) By setting up and solving a differential equation, find the equation of the curve, expressing \\( y \\) in terms of \\( x \\).",
+          "question_id": "8(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q8(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Describe what happens to \\( y \\) as \\( x \\) tends to infinity.\n[1]",
+          "question_id": "8(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q8(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "9",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q9",
+      "main_part": {
+        "text": "9 With respect to the origin \\( O \\), the vertices of a triangle \\( A B C \\) have position vectors\n\\[\n\\overrightarrow{O A}=2 \\mathbf{i}+5 \\mathbf{k}, \\quad \\overrightarrow{O B}=3 \\mathbf{i}+2 \\mathbf{j}+3 \\mathbf{k} \\quad \\text { and } \\quad \\overrightarrow{O C}=\\mathbf{i}+\\mathbf{j}+\\mathbf{k}\n\\]",
+        "question_id": "9",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Using a scalar product, show that angle \\( A B C \\) is a right angle.",
+          "question_id": "9(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_31_Q9(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Show that triangle \\( A B C \\) is isosceles.\n[2]",
+          "question_id": "9(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_31_Q9(b)",
+          "type": "sub"
+        },
+        {
+          "text": "(c) Find the exact length of the perpendicular from \\( O \\) to the line through \\( B \\) and \\( C \\).\n[4]",
+          "question_id": "9(c)",
+          "sub_letter": "c",
+          "full_id": "9709_s20_qp_31_Q9(c)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 4
+    },
+    {
+      "main_question_id": "10",
+      "paper_info": "9709_s20_qp_31",
+      "full_id": "9709_s20_qp_31_Q10",
+      "main_part": {
+        "text": "10",
+        "question_id": "10",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) The complex number \\( u \\) is defined by \\( u=\\frac{3 \\mathrm{i}}{a+2 \\mathrm{i}} \\), where \\( a \\) is real.\n(i) Express \\( u \\) in the Cartesian form \\( x+\\mathrm{i} y \\), where \\( x \\) and \\( y \\) are in terms of \\( a \\).",
+          "question_id": "10(a(i))",
+          "sub_letter": "a(i)",
+          "full_id": "9709_s20_qp_31_Q10(a(i))",
+          "type": "sub"
+        },
+        {
+          "text": "(ii) Find the exact value of \\( a \\) for which \\( \\arg u^{*}=\\frac{1}{3} \\pi \\).\n[3]",
+          "question_id": "10(a(ii))",
+          "sub_letter": "a(ii)",
+          "full_id": "9709_s20_qp_31_Q10(a(ii))",
+          "type": "sub"
+        },
+        {
+          "text": "(b) (i) On a sketch of an Argand diagram, shade the region whose points represent complex numbers \\( z \\) satisfying the inequalities \\( |z-2 i| \\leqslant|z-1-i| \\) and \\( |z-2-i| \\leqslant 2 \\).",
+          "question_id": "10(b(i))",
+          "sub_letter": "b(i)",
+          "full_id": "9709_s20_qp_31_Q10(b(i))",
+          "type": "sub"
+        },
+        {
+          "text": "(ii) Calculate the least value of \\( \\arg z \\) for points in this region.\n[2]",
+          "question_id": "10(b(ii))",
+          "sub_letter": "b(ii)",
+          "full_id": "9709_s20_qp_31_Q10(b(ii))",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 5
+    }
+  ],
+  "processing_log": [
+    {
+      "page": "page_2.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_3.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_4.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_5.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_6.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_7.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_8.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_9.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_10.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_11.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_12.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_13.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_14.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_15.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_16.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_17.png",
+      "detected_regions": 2
+    }
+  ]
+}

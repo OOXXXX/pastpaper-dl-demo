@@ -38,6 +38,7 @@ class QuestionClassifier:
         """
         questions = []
         current_main_question = None
+        current_parent_letter = None  # 跟踪当前的父级子题字母 (a, b, c)
         
         for result in analysis_results:
             text = result['text']
@@ -50,6 +51,9 @@ class QuestionClassifier:
                 # 找到新的主题，保存之前的题目
                 if current_main_question:
                     questions.append(current_main_question)
+                
+                # 重置状态
+                current_parent_letter = None
                 
                 # 检查文本是否包含内嵌的(a)部分
                 main_text, embedded_sub = self._split_main_and_first_sub(text)
@@ -79,15 +83,32 @@ class QuestionClassifier:
                         cropped_image_path=f"cropped_question_{index+1}.png"
                     )
                     current_main_question.sub_parts.append(sub_part)
+                    current_parent_letter = embedded_sub['letter']
                 
             elif part_info['type'] == 'sub':
                 # 子题，添加到当前主题
                 if current_main_question:
+                    sub_letter = part_info['sub_letter']
+                    
+                    # 处理嵌套子题的情况
+                    if part_info.get('is_nested') and current_parent_letter:
+                        # 这是一个 (ii) 类型的子题，需要组合为 (a)(ii)
+                        sub_letter = f"{current_parent_letter}({sub_letter})"
+                    elif len(sub_letter) == 1 and sub_letter in 'abcdef':
+                        # 这是一个新的父级子题 (a), (b), (c)
+                        current_parent_letter = sub_letter
+                    elif '(' in sub_letter:
+                        # 这是已经组合好的嵌套子题，如 a(i), b(i)
+                        # 提取父级字母
+                        parent_match = re.match(r'([a-z])\(', sub_letter)
+                        if parent_match:
+                            current_parent_letter = parent_match.group(1)
+                    
                     sub_part = QuestionPart(
                         text=text,
-                        question_id=f"{current_main_question.main_question_id}({part_info['sub_letter']})",
+                        question_id=f"{current_main_question.main_question_id}({sub_letter})",
                         part_type='sub',
-                        sub_letter=part_info['sub_letter'],
+                        sub_letter=sub_letter,
                         cropped_image_path=f"cropped_question_{index+1}.png"
                     )
                     current_main_question.sub_parts.append(sub_part)
@@ -105,9 +126,9 @@ class QuestionClassifier:
         将包含(a)部分的主题文本分割为主题部分和第一个子题
         返回: (main_text, embedded_sub_dict 或 None)
         """
-        # 特殊格式：7 (a) Prove the identity...
-        # 检查是否以 "数字 (字母)" 开头
-        special_pattern = r'^(\d+)\s+\(([a-z])\)\s+(.*)'
+        # 特殊格式：7 (a) Prove the identity... 或 7 (i) Prove the identity...
+        # 检查是否以 "数字 (字母或罗马数字)" 开头
+        special_pattern = r'^(\d+)\s+\(([a-z]+|i+)\)\s+(.*)'
         special_match = re.match(special_pattern, text.strip(), re.DOTALL)
         
         if special_match:
@@ -121,8 +142,8 @@ class QuestionClassifier:
                 'text': f"({sub_letter}) {sub_content}"
             }
         
-        # 普通格式：寻找换行后的(a)
-        sub_pattern = r'\n\(([a-z])\)\s+(.*?)(?=\n\([a-z]\)|\[|\Z)'
+        # 普通格式：寻找换行后的(a)或(i)
+        sub_pattern = r'\n\(([a-z]+|i+)\)\s+(.*?)(?=\n\([a-z]+|i+\)|\[|\Z)'
         match = re.search(sub_pattern, text, re.DOTALL)
         
         if match:
@@ -154,7 +175,7 @@ class QuestionClassifier:
                 'sub_letter': None
             }
         
-        # 检查文本开头是否包含新的主题号（如 "9 The equation..." 或 "7 (a) Prove..."）
+        # 检查文本开头是否包含新的主题号（如 "9 The equation..." 或 "7 (a) Prove..." 或 "\( 7 \quad \) Let..."）
         main_number_match = re.match(r'^(\d+)\s+[A-Z(]', text.strip())
         if main_number_match:
             return {
@@ -163,16 +184,69 @@ class QuestionClassifier:
                 'sub_letter': None
             }
         
+        # 检查LaTeX格式的主题号（如 "\( 7 \quad \) Let..."）
+        latex_main_match = re.match(r'^\\\(\s*(\d+)\s+\\quad\s*\\\)\s+[A-Z]', text.strip())
+        if latex_main_match:
+            return {
+                'type': 'main',
+                'main_id': latex_main_match.group(1),
+                'sub_letter': None
+            }
+        
         # 先清理LaTeX内容，避免 \( g(x) \) 这种干扰
         cleaned_text = self._remove_latex_content(text)
         
-        # 检查是否以 (a), (b), (c) 等开头（子题）
+        # 首先检查是否包含 (a)...(i) 这种嵌套在同一文本块中的结构
+        embedded_nested_match = re.search(r'^\s*\(([a-z])\)\s+.*?\n\(([i]+)\)\s', cleaned_text.strip(), re.DOTALL)
+        if embedded_nested_match:
+            main_letter = embedded_nested_match.group(1)
+            sub_number = embedded_nested_match.group(2)
+            return {
+                'type': 'sub',
+                'main_id': None,
+                'sub_letter': f"{main_letter}({sub_number})"
+            }
+        
+        # 检查嵌套结构：(a) (i) 或 (b) (ii) 等
+        nested_match = re.search(r'^\s*\(([a-z])\)\s+\(([i]+)\)\s', cleaned_text.strip())
+        if nested_match:
+            main_letter = nested_match.group(1)
+            sub_number = nested_match.group(2)
+            return {
+                'type': 'sub',
+                'main_id': None,
+                'sub_letter': f"{main_letter}({sub_number})"
+            }
+        
+        # 检查是否以 (a), (b), (c) 等开头（一级子题）
         sub_match = re.search(r'^\s*\(([a-z])\)\s', cleaned_text.strip())
         if sub_match:
             return {
                 'type': 'sub',
                 'main_id': None,
                 'sub_letter': sub_match.group(1)
+            }
+        
+        # 检查是否以 (i), (ii), (iii) 等开头（二级子题，需要推断父级）
+        roman_match = re.search(r'^\s*\((i+)\)\s', cleaned_text.strip())
+        if roman_match:
+            return {
+                'type': 'sub',
+                'main_id': None,
+                'sub_letter': roman_match.group(1),
+                'is_nested': True  # 标记为嵌套子题
+            }
+        
+        # 检查文本中是否包含嵌套子题标记
+        nested_pattern = r'(?<!\\\()\s*\(([a-z])\)\s+\(([i]+)\)\s+[A-Z]'
+        nested_match = re.search(nested_pattern, cleaned_text)
+        if nested_match:
+            main_letter = nested_match.group(1)
+            sub_number = nested_match.group(2)
+            return {
+                'type': 'sub', 
+                'main_id': None,
+                'sub_letter': f"{main_letter}({sub_number})"
             }
         
         # 检查文本中是否包含子题标记（更精确的模式）

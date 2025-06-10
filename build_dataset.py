@@ -145,14 +145,14 @@ class DatasetBuilder:
 
 def main():
     """主函数"""
-    print("🏗️  构建9709_s20_qp_11数据集")
+    print("🏗️  构建9709_s20_qp_41数据集")
     print("=" * 60)
     
     # 配置
     model_path = "models/pastpaper_detector_demo/weights/best.pt"
-    paper_folder = "data/raw_images/9709_s20_qp_11"
-    paper_id = "9709_s20_qp_11"
-    output_file = "9709_s20_qp_11_dataset.json"
+    paper_folder = "data/raw_images/9709_s20_qp_41"
+    paper_id = "9709_s20_qp_41"
+    output_file = "9709_s20_qp_41_dataset.json"
     
     # 构建数据集
     builder = DatasetBuilder(model_path)
