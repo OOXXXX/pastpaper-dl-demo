@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['question']
+
+roboflow:
+  workspace: patrick-space-pgdph
+  project: pastpaper-question-detection
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/patrick-space-pgdph/pastpaper-question-detection/dataset/2
