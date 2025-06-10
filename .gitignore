@@ -46,7 +46,7 @@ wandb/
 # Temporary files
 *.tmp
 *.temp
-prediction_result.png
+croptest/prediction_result.png
 
 # Environment variables
 .env

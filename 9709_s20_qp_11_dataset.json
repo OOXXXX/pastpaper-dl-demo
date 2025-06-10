@@ -1,0 +1,341 @@
+{
+  "paper_id": "9709_s20_qp_11",
+  "total_pages": 16,
+  "questions": [
+    {
+      "main_question_id": "1",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q1",
+      "main_part": {
+        "text": "1 The sum of the first nine terms of an arithmetic progression is 117. The sum of the next four terms is 91 .\n\nFind the first term and the common difference of the progression.",
+        "question_id": "1",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "2",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q2",
+      "main_part": {
+        "text": "2 The coefficient of \\( \\frac{1}{x} \\) in the expansion of \\( \\left(k x+\\frac{1}{x}\\right)^{5}+\\left(1-\\frac{2}{x}\\right)^{8} \\) is 74 . Find the value of the positive constant \\( k \\).\n[5]",
+        "question_id": "2",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "3",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q3",
+      "main_part": {
+        "text": "3 Each year the selling price of a diamond necklace increases by \\( 5 \\% \\) of the price the year before. The selling price of the necklace in the year 2000 was \\( \\$ 36000 \\).",
+        "question_id": "3",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Write down an expression for the selling price of the necklace \\( n \\) years later and hence find the selling price in 2008.",
+          "question_id": "3(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q3(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) The company that makes the necklace only sells one each year. Find the total amount of money obtained in the ten-year period starting in the year 2000.",
+          "question_id": "3(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q3(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "4",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q4",
+      "main_part": {
+        "text": "4\n\nThe diagram shows the graph of \\( y=\\mathrm{f}(x) \\), where \\( \\mathrm{f}(x)=\\frac{3}{2} \\cos 2 x+\\frac{1}{2} \\) for \\( 0 \\leqslant x \\leqslant \\pi \\).",
+        "question_id": "4",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) State the range of f .",
+          "question_id": "4(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q4(a)",
+          "type": "sub"
+        },
+        {
+          "text": "A function g is such that \\( \\mathrm{g}(x)=\\mathrm{f}(x)+k \\), where \\( k \\) is a positive constant. The \\( x \\)-axis is a tangent to the curve \\( y=\\mathrm{g}(x) \\).\n(b) State the value of \\( k \\) and hence describe fully the transformation that maps the curve \\( y=\\mathrm{f}(x) \\) on to \\( y=\\mathrm{g}(x) \\).",
+          "question_id": "4(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q4(b)",
+          "type": "sub"
+        },
+        {
+          "text": "(c) State the equation of the curve which is the reflection of \\( y=\\mathrm{f}(x) \\) in the \\( x \\)-axis. Give your answer in the form \\( y=a \\cos 2 x+b \\), where \\( a \\) and \\( b \\) are constants.",
+          "question_id": "4(c)",
+          "sub_letter": "c",
+          "full_id": "9709_s20_qp_11_Q4(c)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 4
+    },
+    {
+      "main_question_id": "5",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q5",
+      "main_part": {
+        "text": "5 The equation of a line is \\( y=m x+c \\), where \\( m \\) and \\( c \\) are constants, and the equation of a curve is \\( x y=16 \\).",
+        "question_id": "5",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Given that the line is a tangent to the curve, express \\( m \\) in terms of \\( c \\).",
+          "question_id": "5(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q5(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Given instead that \\( m=-4 \\), find the set of values of \\( c \\) for which the line intersects the curve at two distinct points.",
+          "question_id": "5(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q5(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "6",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q6",
+      "main_part": {
+        "text": "6 Functions f and g are defined for \\( x \\in \\mathbb{R} \\) by\n\\[\n\\begin{array}{l}\n\\mathrm{f}: x \\mapsto \\frac{1}{2} x-a \\\\\n\\mathrm{~g}: x \\mapsto 3 x+b\n\\end{array}\n\\]\nwhere \\( a \\) and \\( b \\) are constants.",
+        "question_id": "6",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Given that \\( \\operatorname{gg}(2)=10 \\) and \\( \\mathrm{f}^{-1}(2)=14 \\), find the values of \\( a \\) and \\( b \\).",
+          "question_id": "6(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q6(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Using these values of \\( a \\) and \\( b \\), find an expression for \\( \\operatorname{gf}(x) \\) in the form \\( c x+d \\), where \\( c \\) and \\( d \\) are constants.",
+          "question_id": "6(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q6(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "7",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q7",
+      "main_part": {
+        "text": "7",
+        "question_id": "7",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Prove the identity \\( \\frac{1+\\sin \\theta}{\\cos \\theta}+\\frac{\\cos \\theta}{1+\\sin \\theta} \\equiv \\frac{2}{\\cos \\theta} \\).",
+          "question_id": "7(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q7(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Hence solve the equation \\( \\frac{1+\\sin \\theta}{\\cos \\theta}+\\frac{\\cos \\theta}{1+\\sin \\theta}=\\frac{3}{\\sin \\theta} \\), for \\( 0 \\leqslant \\theta \\leqslant 2 \\pi \\).",
+          "question_id": "7(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q7(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    },
+    {
+      "main_question_id": "8",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q8",
+      "main_part": {
+        "text": "8\n\nIn the diagram, \\( A B C \\) is a semicircle with diameter \\( A C \\), centre \\( O \\) and radius 6 cm . The length of the \\( \\operatorname{arc} A B \\) is 15 cm . The point \\( X \\) lies on \\( A C \\) and \\( B X \\) is perpendicular to \\( A X \\).\n\nFind the perimeter of the shaded region \\( B X C \\).\n[6]",
+        "question_id": "8",
+        "type": "main"
+      },
+      "sub_parts": [],
+      "total_parts": 1
+    },
+    {
+      "main_question_id": "9",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q9",
+      "main_part": {
+        "text": "9 The equation of a curve is \\( y=(3-2 x)^{3}+24 x \\).",
+        "question_id": "9",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find expressions for \\( \\frac{\\mathrm{d} y}{\\mathrm{~d} x} \\) and \\( \\frac{\\mathrm{d}^{2} y}{\\mathrm{~d} x^{2}} \\).",
+          "question_id": "9(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q9(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the coordinates of each of the stationary points on the curve.\n[3]",
+          "question_id": "9(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q9(b)",
+          "type": "sub"
+        },
+        {
+          "text": "(c) Determine the nature of each stationary point.",
+          "question_id": "9(c)",
+          "sub_letter": "c",
+          "full_id": "9709_s20_qp_11_Q9(c)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 4
+    },
+    {
+      "main_question_id": "10",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q10",
+      "main_part": {
+        "text": "10 The coordinates of the points \\( A \\) and \\( B \\) are \\( (-1,-2) \\) and \\( (7,4) \\) respectively.",
+        "question_id": "10",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find the equation of the circle, \\( C \\), for which \\( A B \\) is a diameter.",
+          "question_id": "10(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q10(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the equation of the tangent, \\( T \\), to circle \\( C \\) at the point \\( B \\).\n[4]",
+          "question_id": "10(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q10(b)",
+          "type": "sub"
+        },
+        {
+          "text": "(c) Find the equation of the circle which is the reflection of circle \\( C \\) in the line \\( T \\).\n[3]",
+          "question_id": "10(c)",
+          "sub_letter": "c",
+          "full_id": "9709_s20_qp_11_Q10(c)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 4
+    },
+    {
+      "main_question_id": "11",
+      "paper_info": "9709_s20_qp_11",
+      "full_id": "9709_s20_qp_11_Q11",
+      "main_part": {
+        "text": "11\n\nThe diagram shows part of the curve \\( y=\\frac{8}{x+2} \\) and the line \\( 2 y+x=8 \\), intersecting at points \\( A \\) and \\( B \\). The point \\( C \\) lies on the curve and the tangent to the curve at \\( C \\) is parallel to \\( A B \\).",
+        "question_id": "11",
+        "type": "main"
+      },
+      "sub_parts": [
+        {
+          "text": "(a) Find, by calculation, the coordinates of \\( A, B \\) and \\( C \\).",
+          "question_id": "11(a)",
+          "sub_letter": "a",
+          "full_id": "9709_s20_qp_11_Q11(a)",
+          "type": "sub"
+        },
+        {
+          "text": "(b) Find the volume generated when the shaded region, bounded by the curve and the line, is rotated through \\( 360^{\\circ} \\) about the \\( x \\)-axis.",
+          "question_id": "11(b)",
+          "sub_letter": "b",
+          "full_id": "9709_s20_qp_11_Q11(b)",
+          "type": "sub"
+        }
+      ],
+      "total_parts": 3
+    }
+  ],
+  "processing_log": [
+    {
+      "page": "page_2.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_3.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_4.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_5.png",
+      "detected_regions": 3
+    },
+    {
+      "page": "page_6.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_7.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_8.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_9.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_10.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_12.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_13.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_14.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_15.png",
+      "detected_regions": 2
+    },
+    {
+      "page": "page_16.png",
+      "detected_regions": 1
+    },
+    {
+      "page": "page_17.png",
+      "detected_regions": 1
+    }
+  ]
+}
