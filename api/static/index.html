@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Paper Question Detector</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fafaf9;
+            min-height: 100vh;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: white;
+            border-bottom: 1px solid #e5e5e4;
+        }
+
+        .header h1 {
+            margin: 0 0 12px 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1e1e1e;
+            letter-spacing: -0.025em;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 1.125rem;
+            color: #6b6b6b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .upload-section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #e5e5e4;
+        }
+
+        .upload-area {
+            border: 2px dashed #d1d1cf;
+            border-radius: 8px;
+            padding: 60px 20px;
+            background: #fafaf9;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .upload-area:hover {
+            border-color: #b8860b;
+            background: #fffef8;
+        }
+
+        .upload-area.dragover {
+            border-color: #b8860b;
+            background: #fffef8;
+            border-style: solid;
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            color: #9b9b9a;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .upload-text {
+            font-size: 1.125rem;
+            color: #1e1e1e;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .upload-hint {
+            font-size: 0.875rem;
+            color: #6b6b6b;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: #1e1e1e;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #2d2d2d;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            background: #d1d1cf;
+            color: #9b9b9a;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #6b6b6b;
+            border: 1px solid #e5e5e4;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #f5f5f4;
+            color: #1e1e1e;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b6b6b;
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e5e5e4;
+            border-top: 3px solid #1e1e1e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results-section {
+            padding: 40px 20px;
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .results-header h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+
+        .stats {
+            background: #f5f5f4;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            color: #6b6b6b;
+            font-size: 0.875rem;
+            border: 1px solid #e5e5e4;
+        }
+
+        .original-image {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .original-image h3 {
+            margin: 0 0 16px 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+
+        .original-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e4;
+            background: white;
+        }
+
+        .cropped-questions h3 {
+            margin: 0 0 24px 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid #e5e5e4;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .question-card:hover {
+            border-color: #d1d1cf;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .question-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #e5e5e4;
+        }
+
+        .question-number {
+            font-weight: 600;
+            color: #1e1e1e;
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+
+        .download-btn {
+            background: #f5f5f4;
+            color: #1e1e1e;
+            border: 1px solid #e5e5e4;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            margin-top: 12px;
+        }
+
+        .download-btn:hover {
+            background: #e5e5e4;
+        }
+
+        .alert {
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin: 20px;
+            font-size: 0.875rem;
+            display: none;
+            border: 1px solid;
+        }
+
+        .error {
+            background: #fef2f2;
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+
+        .success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border-color: #bbf7d0;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b6b6b;
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .empty-state-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1e1e1e;
+        }
+
+        .empty-state-subtitle {
+            font-size: 0.875rem;
+            color: #6b6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px 30px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .upload-section, .results-section {
+                padding: 30px 20px;
+            }
+
+            .upload-area {
+                padding: 40px 20px;
+            }
+
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                margin: 4px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Past Paper Question Detector</h1>
+            <p>Upload an exam paper image to automatically detect and extract individual questions</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="upload-section">
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <span class="upload-icon">📄</span>
+                    <div class="upload-text">Click to upload or drag and drop</div>
+                    <div class="upload-hint">Supports JPG, PNG • Max size: 10MB</div>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" />
+                
+                <div class="button-group">
+                    <button class="btn" id="detectBtn" disabled>
+                        <span>🔍</span>
+                        Detect Questions
+                    </button>
+                    <button class="btn btn-secondary" id="clearBtn">
+                        <span>🗑️</span>
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing image and detecting questions...</p>
+            </div>
+
+            <div class="alert error" id="error"></div>
+            <div class="alert success" id="success"></div>
+
+            <div class="results-section" id="results">
+                <div class="results-header">
+                    <h2>Detection Results</h2>
+                    <div class="stats" id="stats">
+                        Found <strong id="questionCount">0</strong> questions
+                    </div>
+                </div>
+
+                <div class="original-image">
+                    <h3>Original Image</h3>
+                    <img id="originalImg" src="" alt="Original uploaded image">
+                </div>
+
+                <div class="cropped-questions">
+                    <h3>Detected Questions</h3>
+                    <div class="questions-grid" id="questionsGrid">
+                        <!-- Questions will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const detectBtn = document.getElementById('detectBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const uploadArea = document.querySelector('.upload-area');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const error = document.getElementById('error');
+        const success = document.getElementById('success');
+        const originalImg = document.getElementById('originalImg');
+        const questionsGrid = document.getElementById('questionsGrid');
+        const questionCount = document.getElementById('questionCount');
+
+        let selectedFile = null;
+
+        // File input handling
+        fileInput.addEventListener('change', handleFileSelect);
+        detectBtn.addEventListener('click', detectQuestions);
+        clearBtn.addEventListener('click', clearAll);
+
+        // Drag and drop handling
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleFileSelect();
+            }
+        });
+
+        function handleFileSelect() {
+            const file = fileInput.files[0];
+            if (file) {
+                if (file.size > 10 * 1024 * 1024) {
+                    showError('File size must be less than 10MB');
+                    return;
+                }
+
+                selectedFile = file;
+                detectBtn.disabled = false;
+                
+                // Preview the selected file
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    originalImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+
+                showSuccess(`Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
+                hideResults();
+            }
+        }
+
+        async function detectQuestions() {
+            if (!selectedFile) {
+                showError('Please select an image first');
+                return;
+            }
+
+            showLoading();
+            hideError();
+            hideSuccess();
+
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            try {
+                const response = await fetch('/detect/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                
+            } catch (err) {
+                showError(`Detection failed: ${err.message}`);
+                console.error('Detection error:', err);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function displayResults(data) {
+            const questions = data.detected_questions || [];
+            questionCount.textContent = questions.length;
+
+            // Clear previous results
+            questionsGrid.innerHTML = '';
+
+            if (questions.length === 0) {
+                questionsGrid.innerHTML = `
+                    <div class="empty-state">
+                        <span class="empty-state-icon">🔍</span>
+                        <div class="empty-state-title">No questions detected</div>
+                        <div class="empty-state-subtitle">Try uploading a clearer image of an exam paper</div>
+                    </div>
+                `;
+            } else {
+                questions.forEach((base64Image, index) => {
+                    const questionCard = document.createElement('div');
+                    questionCard.className = 'question-card';
+                    questionCard.innerHTML = `
+                        <div class="question-number">Question ${index + 1}</div>
+                        <img src="data:image/png;base64,${base64Image}" alt="Question ${index + 1}">
+                        <button class="btn download-btn" onclick="downloadQuestion('${base64Image}', ${index + 1})">
+                            <span>💾</span>
+                            Download
+                        </button>
+                    `;
+                    questionsGrid.appendChild(questionCard);
+                });
+
+                showSuccess(`Successfully detected ${questions.length} question${questions.length > 1 ? 's' : ''}!`);
+            }
+
+            results.style.display = 'block';
+        }
+
+        function downloadQuestion(base64Image, questionNumber) {
+            const link = document.createElement('a');
+            link.href = `data:image/png;base64,${base64Image}`;
+            link.download = `question_${questionNumber}.png`;
+            link.click();
+        }
+
+        function clearAll() {
+            selectedFile = null;
+            fileInput.value = '';
+            detectBtn.disabled = true;
+            hideResults();
+            hideError();
+            hideSuccess();
+            originalImg.src = '';
+        }
+
+        function showLoading() {
+            loading.style.display = 'block';
+            detectBtn.disabled = true;
+        }
+
+        function hideLoading() {
+            loading.style.display = 'none';
+            detectBtn.disabled = false;
+        }
+
+        function showError(message) {
+            error.textContent = message;
+            error.style.display = 'block';
+            setTimeout(() => hideError(), 5000);
+        }
+
+        function hideError() {
+            error.style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            success.textContent = message;
+            success.style.display = 'block';
+            setTimeout(() => hideSuccess(), 3000);
+        }
+
+        function hideSuccess() {
+            success.style.display = 'none';
+        }
+
+        function hideResults() {
+            results.style.display = 'none';
+        }
+
+        // Check API connection on load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/');
+                if (response.ok) {
+                    console.log('API connection successful');
+                } else {
+                    showError('API connection failed. Please make sure the server is running.');
+                }
+            } catch (err) {
+                showError('Cannot connect to API server. Please start the server with: uvicorn main:app --reload');
+            }
+        });
+    </script>
+</body>
+</html>

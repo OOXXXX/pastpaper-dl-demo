@@ -20,6 +20,7 @@ This project implements an end-to-end pipeline that:
 - ✅ **Intelligent Question Classification**: Hierarchical parsing of main questions and sub-parts (a, b, c) with support for nested structures like (a)(i), (a)(ii)
 - ✅ **Structured Dataset Generation**: Creates JSON datasets with organized question content
 - ✅ **Academic Web Visualizer**: Clean, academic-style HTML viewer with MathJax LaTeX rendering
+- ✅ **Interactive Web Interface**: Modern, Claude-inspired UI for question detection and download
 - ✅ **Multi-Paper Support**: Dynamic selection between different past papers
 - ✅ **REST API**: FastAPI service for uploading images and getting detected questions
 - ✅ **Real-world Dataset**: Trained on actual CAIE Mathematics (9709) 2020 Summer papers
@@ -44,7 +45,9 @@ pastpaper-dl-demo/
 │   ├── process_page.py          # Individual page processing
 │   └── debug_ocr.py             # OCR debugging utilities
 ├── 📂 api/
-│   └── main.py                  # FastAPI service for question detection
+│   ├── main.py                  # FastAPI service for question detection
+│   └── static/
+│       └── index.html           # Modern web interface for question detection
 ├── 📂 models/
 │   └── pastpaper_detector_demo/ # Trained YOLOv8 model and metrics
 │       └── weights/
@@ -127,16 +130,24 @@ python predict.py
 ```
 Generates `prediction_result.png` with detected questions highlighted.
 
-### 🌐 Run API Service
+### 🌐 Run API Service & Web Interface
 ```bash
 cd api
 uvicorn main:app --reload
 ```
-Then visit: `http://127.0.0.1:8000/docs` for interactive API documentation.
+Then visit: `http://127.0.0.1:8000` for the web interface or `http://127.0.0.1:8000/docs` for API documentation.
+
+**Web Interface Features:**
+- Clean, modern UI inspired by Claude's design language
+- Drag-and-drop image upload
+- Real-time question detection and visualization
+- Individual question download functionality
+- Responsive design for desktop and mobile
 
 **API Endpoints:**
 - `POST /detect/` - Upload image, get cropped questions as Base64
-- `GET /` - Health check
+- `GET /health` - Health check
+- `GET /` - Serves the web interface
 
 ## 📊 Model Performance
 

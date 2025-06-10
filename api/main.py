@@ -1,11 +1,17 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from ultralytics import YOLO
 import cv2
 import numpy as np
 import io
 import base64
+import os
 
 app = FastAPI(title="Past Paper Question Detector API")
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # 加载您训练好的模型
 MODEL_PATH = "../models/pastpaper_detector_demo/weights/best.pt"
@@ -38,5 +44,9 @@ async def detect_and_crop(file: UploadFile = File(...)):
     return {"detected_questions": cropped_images_base64}
 
 @app.get("/")
-def root():
-    return {"message": "Welcome to the Question Detector API!"}
+async def root():
+    return FileResponse('static/index.html')
+
+@app.get("/health")
+def health_check():
+    return {"message": "Welcome to the Question Detector API!", "status": "healthy"}
