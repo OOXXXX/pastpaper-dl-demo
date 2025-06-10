@@ -441,6 +441,16 @@
             return text.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n');
         }
 
+        function cleanMainText(text) {
+            // Remove leading question number (e.g., "3 " or "10 ")
+            return text.replace(/^\d+\s*/, '').trim();
+        }
+
+        function cleanSubText(text) {
+            // Remove leading sub-question marker (e.g., "(a) " or "(b) ")
+            return text.replace(/^\([a-z]+(?:\([iv]+\))?\)\s*/, '').trim();
+        }
+
         function generateTOC() {
             const tocList = document.getElementById('tocList');
             tocList.innerHTML = '';
@@ -475,10 +485,9 @@
                 questionDiv.innerHTML = `
                     <div class="question-header">
                         <div class="question-number">Question ${question.main_question_id}</div>
-                        <div class="question-id">${question.full_id}</div>
                     </div>
                     <div class="main-question">
-                        ${processText(question.main_part.text)}
+                        ${processText(cleanMainText(question.main_part.text))}
                     </div>
                     ${question.sub_parts.length > 0 ? 
                         `<div class="sub-questions">
@@ -488,16 +497,12 @@
                                         (${sub.sub_letter})
                                     </div>
                                     <div class="sub-question-text">
-                                        ${processText(sub.text)}
+                                        ${processText(cleanSubText(sub.text))}
                                     </div>
                                 </div>
                             `).join('')}
-                        </div>` : 
-                        '<div class="no-subquestions">No sub-questions</div>'
+                        </div>` : ''
                     }
-                    <div class="question-footer">
-                        ${question.total_parts} part${question.total_parts !== 1 ? 's' : ''}
-                    </div>
                 `;
                 
                 container.appendChild(questionDiv);
